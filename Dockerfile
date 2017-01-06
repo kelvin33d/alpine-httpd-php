@@ -4,6 +4,7 @@ MAINTAINER Robert Weclawski <robert.weclawski@n-wms.com>
 COPY scripts/docker_logo.txt /
 
 RUN \
+  echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
   apk update && \
   apk upgrade && \
   apk add \
@@ -11,30 +12,30 @@ RUN \
     apache2-ssl \
     apache2-utils \
     apache2-error \
-    php-cli \
-    php-phar \
-    php-intl \
-    php-mysql \
-    php-xml \
-    php-enchant \
-    php-bcmath \
-    php-apache2 \
-    php-sysvsem \
-    php-gd \
-    php-pdo_mysql \
-    php-opcache \
-    php-posix \
-    php-soap \
-    php-openssl \
-    php-json \
-    php-zlib \
+    php7 \
+    php7-phar \
+    php7-intl \
+    php7-mysqlnd \
+    php7-mbstring \
+    php7-gettext \
+    php7-xml \
+    php7-enchant \
+    php7-bcmath \
+    php7-apache2 \
+    php7-sysvsem \
+    php7-gd \
+    php7-pdo_mysql \
+    php7-opcache \
+    php7-posix \
+    php7-soap \
+    php7-openssl \
+    php7-json \
+    php7-zlib \
     bash \
     curl \
     ca-certificates && \
-    echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
-    apk update && \
-    apk add php-redis@testing && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+    apk add php7-redis@testing && \
+    curl -sS https://getcomposer.org/installer | php7 -- --install-dir=/usr/local/bin --filename=composer && \
     mkdir -p /run/apache2/ && \
   cat docker_logo.txt
 COPY scripts/etc/apache2/conf.d/ssl.conf /etc/apache2/conf.d/ssl.conf
