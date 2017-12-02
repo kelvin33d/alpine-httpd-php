@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Robert Weclawski <robert.weclawski@n-wms.com>
+MAINTAINER Robert Weclawski <robert.weclawski@whitefoot.io>
 
 COPY scripts/docker_logo.txt /
 
@@ -31,6 +31,8 @@ RUN \
     php7-openssl \
     php7-json \
     php7-zlib \
+    php7-session \
+    php7-redis \
     bash \
     curl \
     ca-certificates && \
