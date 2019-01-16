@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Robert Weclawski <robert.weclawski@whitefoot.io>
+LABEL MAINTAINER Robert Weclawski <robert.weclawski@whitefoot.io>
 
 COPY scripts/docker_logo.txt /
 
@@ -43,6 +43,7 @@ RUN \
 COPY scripts/etc/apache2/conf.d/ssl.conf /etc/apache2/conf.d/ssl.conf
 COPY scripts/etc/apache2/conf.d/custom.conf /etc/apache2/conf.d/custom.conf
 COPY scripts/var/www/localhost/htdocs/index.php /var/www/localhost/htdocs/
+COPY scripts/var/www/localhost/htdocs/env.php /var/www/localhost/htdocs/
 EXPOSE 80 443 843
 
 ENTRYPOINT ["/usr/sbin/httpd"]
